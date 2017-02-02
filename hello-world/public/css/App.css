@@ -4,7 +4,10 @@ body {
   color: #fff;
 }
 
-.header{
+.header {
+  background-color: #222;
+  padding: 20px 0;
+  color: white;
   text-align: center;
 }
 
@@ -13,19 +16,15 @@ body {
   height: 80px;
 }
 
-.header {
-  background-color: #222;
-  padding: 20px 0;
-  color: white;
-}
-
 .intro {
   font-size: large;
 }
+
 ul {
   list-style: none;
   padding: 0;
 }
+
 .nav li{
   display: inline-block;
   margin: 0 10px;
@@ -44,24 +43,13 @@ a {
   color: #fff;
 }
 
-form {
-  margin-top: 50px;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input {
-  background-color: transparent;
+input, textarea {
+  background-color: transparent!important;
   padding: 5px;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #fff !important;
+  color: #fff !important;
   font-size: 14px;
 }
-
-
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
