@@ -54,38 +54,58 @@ class RecipeList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            item: 'soup',
+            item: (Object.keys(dishes)[0]),
             recipes: dishes
         }
     }
+
+    removeItem = (e) => {
+        this.props.removeItem(e.target.attributes.data.value);
+        this.setState({item: (Object.keys(dishes)[0])});
+    };
 
     chooseRecipe = (e) => {
         this.setState({item: e.target.attributes.data.value});
     };
 
     render() {
-        return (
-            <div className="col-xs-12 col-md-8">
-                <div className="recipe_list">
-                    <h2>List of recipes:</h2>
-                    <ul className="recipe_item">
-                        {Object.keys(this.props.recipes).map((key, v) =>
-                            <li onClick={this.chooseRecipe} data={key} key={key.toString()}>{key}</li>
-                        )}
-                    </ul>
-                </div>
 
-                <div className="recipe_wrap">
-                    <h3>Recipe:</h3>
 
-                    <ul className="recipe">
-                        {this.props.recipes[this.state.item]['ingredients'].map((val) => <li
-                            key={val.toString()}>{val}</li>)}
-                    </ul>
-                    <div>{this.props.recipes[this.state.item]['info']}</div>
+        if(Object.keys(this.state.recipes).map(key => this.state.recipes.hasOwnProperty(key)).length > 0){
+            return (
+
+                <div className="col-xs-12 col-md-8">
+                    <div className="recipe_list">
+                        <h2>List of recipes:</h2>
+                        <ul className="recipe_item">
+                            {Object.keys(this.props.recipes).map((key, v) =>
+                                <li key={key.toString()}><span onClick={this.chooseRecipe} data={key}>{key}</span> <span onClick={this.removeItem} data={key} className="remove">X</span></li>
+                            )}
+                        </ul>
+                    </div>
+
+                    <div className="recipe_wrap">
+                        <h3>Recipe:</h3>
+
+                        <ul className="recipe">
+                            {this.props.recipes[this.state.item]['ingredients'].map((val) => <li
+                                key={val.toString()}>{val}</li>)}
+                        </ul>
+                        <div>{this.props.recipes[this.state.item]['info']}</div>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else {
+            return (
+                <div className="col-xs-12 col-md-8">
+                    <h3>List is empty :(</h3>
+                </div>
+            )
+        }
+
+
+
     }
 }
 
@@ -95,9 +115,6 @@ class AddItem extends React.Component {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {
-            value: 'Please write info'
-        };
     }
 
     handleChange(event) {
@@ -148,8 +165,14 @@ class Home extends Component {
         };
     }
 
+    removeItem = (value) => {
+        delete dishes[value];
+        this.setState({dishes: dishes});
+    };
+
     onAdd = (values) => {
         dishes[values.name] = {'ingredients': [values.ingredients], 'info': values.info};
+        console.log(dishes);
         this.setState({dishes: dishes});
     };
 
@@ -158,7 +181,7 @@ class Home extends Component {
             <div>
                 <Header/>
                 <div className="row">
-                    <RecipeList recipes={this.state.dishes}/>
+                    <RecipeList recipes={this.state.dishes} removeItem={this.removeItem} />
                     <AddItem onAdd={this.onAdd}/>
                 </div>
             </div>
