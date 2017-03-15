@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+
 class RecipeItem extends Component {
 
-
     render() {
-
         return (
             <span>{this.props.value}</span>
         )

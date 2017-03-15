@@ -33,7 +33,6 @@ class Logout extends Component {
 function mapStateToProps(state) {
     return {
         status : state.admin
-
     }
 }
 function dispatchStateToProps(dispatch) {
