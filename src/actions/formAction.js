@@ -11,3 +11,10 @@ export const changeDishList = (dish) =>{
         payload: dish
     };
 };
+
+export const removeItem = (dish) =>{
+    return {
+        type: 'REMOVE_RECIPE_ITEM',
+        payload: dish
+    };
+};

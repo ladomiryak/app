@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {DISHESLIST} from '../constants/data';
-
 class AddItem extends Component {
 
     constructor(props) {
@@ -21,14 +19,7 @@ class AddItem extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const { dispatch } = this.props;
-
-        const { name, ingredients, info  } = this.state;
-        DISHESLIST['dishes'][name] = {
-            'ingredients' : ingredients,
-                'info' : info
-        };
-
-         dispatch({type: 'CHANGE_DISHES_LIST', payload: DISHESLIST});
+         dispatch({type: 'CHANGE_DISHES_LIST', payload: this.state});
     }
 
     render() {
