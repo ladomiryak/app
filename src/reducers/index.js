@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import dishes  from './dishesForm';
+import dishesList  from './dishesForm';
 
 const rootReducer = combineReducers({
-    dishes
+    dishesList
 });
 
 export default rootReducer;

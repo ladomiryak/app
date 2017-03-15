@@ -1,10 +1,19 @@
-import {dishesList} from '../constants/data';
+import {DISHESLIST} from '../constants/data';
 
-export default function dishes(state = dishesList, action) {
+export default function dishesList(state = DISHESLIST, action) {
 
     switch (action.type) {
         case 'CHANGE_DISHES_LIST':
-            return {data: action.payload }
+
+            return {
+                ...state,
+            };
+
+        case 'ADD_RECIPE' :
+            return {
+                data: action.payload
+            };
+
         default:
             return state;
     }

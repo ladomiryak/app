@@ -5,7 +5,7 @@ class RecipeList extends Component {
 
     render() {
 
-        const dishesItem = Object.keys(this.props.dishes).map((key, v) =>
+        const dishesItem = Object.keys(this.props.list.dishes).map((key, v) =>
             <li key={key.toString()} data={key}>{key}</li>);
 
         return (
@@ -21,7 +21,8 @@ class RecipeList extends Component {
 
 function mapStateToProps(state) {
     return {
-        dishes: state.dishes
+        list: state.dishesList
+
     }
 }
 

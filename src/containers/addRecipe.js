@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {DISHESLIST} from '../constants/data';
 
 class AddItem extends Component {
 
@@ -20,7 +21,14 @@ class AddItem extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const { dispatch } = this.props;
-         dispatch({type: 'CHANGE_DISHES_LIST', payload: this.state});
+
+        const { name, ingredients, info  } = this.state;
+        DISHESLIST['dishes'][name] = {
+            'ingredients' : ingredients,
+                'info' : info
+        };
+
+         dispatch({type: 'CHANGE_DISHES_LIST', payload: DISHESLIST});
     }
 
     render() {
@@ -51,15 +59,10 @@ class AddItem extends Component {
 
 }
 
-function mapStateToProps(state) {
-    return {
-        state,
-    };
-}
 function dispatchStateToProps(dispatch) {
     return {
         dispatch,
     };
 }
 
-export default connect(mapStateToProps, dispatchStateToProps)(AddItem);
+export default connect(dispatchStateToProps)(AddItem);
