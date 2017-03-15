@@ -15,4 +15,5 @@ build
 npm-debug.log
 
 #idea
+.idea/
 .idea
