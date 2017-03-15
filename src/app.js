@@ -14,7 +14,7 @@ export default class App extends Component {
             <Provider store={store}>
                 <Router history={browserHistory}>
                     <Route path={'/'} component={Home}></Route>
-                    <Route path={'/admin'} component={Admin}></Route>
+                    <Route path={'/login'} component={Admin}></Route>
                 </Router>
             </Provider>
         );

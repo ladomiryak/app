@@ -12,7 +12,7 @@ class Header extends Component {
                 <h2>Welcome to my kitchen {status === 'LOCKED' ? 'Dude' : 'Admin'}</h2>
                 <ul className="nav nav-tabs">
                     <li className="nav-item"><Link to={'/'}>Home</Link></li>
-                    <li className="nav-item"><Link to={'/admin'}>Admin</Link></li>
+                    <li className="nav-item"><Link to={'/login'}>Login</Link></li>
                 </ul>
             </header>
         );
